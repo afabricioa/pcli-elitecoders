@@ -15,29 +15,104 @@ export default function Header(){
         setAnchorEl(null);
     };
 
+    const [servicesVisible, setServicesVisible] = useState(false);
+
+    const handleMouseEnter = () => {
+        setServicesVisible(true);
+    };
+    
+      const handleMouseLeave = () => {
+        setServicesVisible(false);
+    };
+
+    const [resourcesVisible, setResourcesVisible] = useState(false);
+
+    const handleMouseEnterResources = () => {
+        setResourcesVisible(true);
+    };
+    
+      const handleMouseLeaveResources = () => {
+        setResourcesVisible(false);
+    };
+
+    const [locationsVisible, setLocationsVisible] = useState(false);
+
+    const handleMouseEnterLocations = () => {
+        setLocationsVisible(true);
+    };
+    
+      const handleMouseLeaveLocations = () => {
+        setLocationsVisible(false);
+    };
+
     return (
         <header>
-            <section className="mx-auto flex flex-col justify-center h-[132px] max-w-[1731px]">
-                <nav className="flex flex-wrap items-center justify-between pl-10 pr-10 pt-[55px]">
-                    <div className="w-[90%] flex items-center justify-center flex-shrink-1 bg-gray-100 md:justify-start md:w-[40%]">
-                        <img src="/logo-top.png" alt="logo pcli" className="ml-4 h-auto w-[250px] md:ml-12 md:w-[350px] 2xl:w-[400px] 2xl:w-full max-w-full min-w-0"/>
+            <section className="mx-auto flex flex-col justify-center md:h-[131px] max-w-[1731px]">
+                <nav className="flex items-center justify-between pl-10 pr-10 pt-[2vw] md:pl-0 md:pr-2">
+                    <div className="w-[90%] flex items-center justify-center flex-shrink-1 md:ml-1 md:justify-start md:w-[25%] lg:w-[30%]">
+                        <img src="/logo-top.png" alt="logo--pcli" className="ml-2 h-auto w-[300px] m:w-[200px] lg:w-full 2xl:max-w-full min-w-0"/>
                     </div>
-                    <div className="w-auto pt-10 hidden md:flex md:flex-wrap md:items-center md:justify-between md:gap-6">
-                        <div className="flex-shrink-0">About Us</div>
-                        <div className="flex-shrink-0">Services</div>
-                        <div className="flex-shrink-0">Resources</div>
-                        <div className="flex-shrink-0">Giving Back</div>
-                        <div className="flex-shrink-0">Locations</div>
-                        <div className="flex-shrink-0">Contact Us</div>
+                    <div className="w-auto md:mr-4 md:w-[65%] text-sm lg:text-base">
+                        <div className="flex-shrink-0 justify-end cursor-pointer hidden md:flex">FOR DOCTORS</div>
+                        <div className="w-auto hidden md:flex justify-end md:items-center md:pt-5">
+                            <div className="flex-shrink-0 px-2 border-r-[1px] border-black cursor-pointer">About Us</div>
+                            <div className="relative flex-shrink-0 px-2 border-r-[1px] border-black flex hover:bg-slate-100 cursor-pointer" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+                                Services
+                                <img src="/assets/drop-icon.png" alt="icon" className="h-[25px] w-[25px]"/>
+                                {servicesVisible && (
+                                    <div className="absolute mt-6 w-auto ml-[-10px] z-1 px-8 rounded bg-white shadow-lg shadow-slate-200">
+                                        <ul className="whitespace-nowrap">
+                                            <li className="hover:text-indigo-700 cursor-pointer">Cataract Correction</li>
+                                            <li className="hover:text-indigo-700 cursor-pointer">LASIK Vision Corection</li>
+                                            <li className="hover:text-indigo-700 cursor-pointer">LASIK Alternatives</li>
+                                        </ul>
+                                    </div>
+                                )}
+                            </div>
+                            <div className="relative flex-shrink-0 px-2 border-r-[1px] border-black flex cursor-pointer"  onMouseEnter={handleMouseEnterResources} onMouseLeave={handleMouseLeaveResources}>
+                                Resources
+                                <img src="/assets/drop-icon.png" alt="icon" className="h-[25px] w-[25px]"/>
+                                {resourcesVisible && (
+                                    <div className="absolute mt-6 w-auto ml-[-10px] z-1 px-8 rounded shadow-lg bg-white shadow-slate-200">
+                                        <ul className="whitespace-nowrap">
+                                            <li className="hover:text-indigo-700 cursor-pointer">Video Eye Library</li>
+                                            <li className="hover:text-indigo-700 cursor-pointer">Insurance Accepted</li>
+                                            <li className="hover:text-indigo-700 cursor-pointer">Patient Newsletter</li>
+                                            <li className="hover:text-indigo-700 cursor-pointer">Financing Option</li>
+                                            <li className="hover:text-indigo-700 cursor-pointer">Online Bill Payment</li>
+                                            <li className="hover:text-indigo-700 cursor-pointer">Patient Portal</li>
+                                            <li className="hover:text-indigo-700 cursor-pointer">Find a Family Eye Doctor</li>
+                                        </ul>
+                                    </div>
+                                )}
+                            </div>
+                            <div className="flex-shrink-0 px-2 border-r-[1px] border-black cursor-pointer">Giving Back</div>
+                            <div className="relative flex-shrink-0 px-2 border-r-[1px] border-black flex cursor-pointer"  onMouseEnter={handleMouseEnterLocations} onMouseLeave={handleMouseLeaveLocations}>
+                                Locations
+                                <img src="/assets/drop-icon.png" height={20} width={30} alt="icon"/>
+                                {locationsVisible && (
+                                    <div className="absolute mt-6 w-auto ml-[-10px] z-1 px-8 rounded bg-white shadow-lg shadow-slate-200">
+                                        <ul className="whitespace-nowrap">
+                                            <li className="hover:text-indigo-700 cursor-pointer">Alaska</li>
+                                            <li className="hover:text-indigo-700 cursor-pointer">Idaho</li>
+                                            <li className="hover:text-indigo-700 cursor-pointer">Montana</li>
+                                        </ul>
+                                    </div>
+                                )}
+                            </div>
+                            <div className="flex-shrink-0 pl-2 cursor-pointer">Contact Us</div>
+                        </div>
                     </div>
-                    <IconButton
-                        edge="end"
-                        color="inherit"
-                        sx={{ml: 2, display: {md: 'none'}}}
-                        onClick={handleMenuClick}
-                    >
-                        <MenuIcon/>
-                    </IconButton>
+                    <div className="flex items-center flex-col md:hidden">
+                        <div className="flex flex-shrink-0 justify-end cursor-pointer text-[2vw] whitespace-nowrap">FOR DOCTORS</div>
+                        <IconButton
+                            edge="end"
+                            color="inherit"
+                            onClick={handleMenuClick}
+                        >
+                            <MenuIcon/>
+                        </IconButton>
+                    </div>
                     <Menu
                         id="basic-menu"
                         anchorEl={anchorEl}
