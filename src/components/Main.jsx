@@ -111,7 +111,6 @@ export default function Main(){
                                 "adipiscing elit. Quisque sed elit sit amet \n"+ 
                                 "tellus."}
                             </div>
-                            <br/>
                             <p className="text-[13px] text-white font-[600]">Location, HR</p>
                         </div>
                         <div className="quote">
@@ -121,7 +120,6 @@ export default function Main(){
                                 "adipiscing elit. Quisque sed elit sit amet \n"+
                                 "tellus."}
                             </div>
-                            <br/>
                             <p className="text-[13px] text-white font-[600]">Location, HR</p>
                         </div>
                         <div className="quote">
@@ -130,7 +128,6 @@ export default function Main(){
                                 "adipiscing elit. Quisque sed elit sit amet \n"+ 
                                 "tellus."}
                             </div>
-                            <br/>
                             <p className="text-[13px] text-white font-[600]">Location, HR</p>
                         </div>
                     </div>
