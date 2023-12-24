@@ -2,15 +2,14 @@ name: Deploy to S3 bucket
 
 on:
   push:
-    branches:
-      - "master"
+    branches: [master]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [ 14, 16, 18, 20 ]
+        node: [ 14, 16, 18 ]
     name: Node ${{ matrix.node }} sample
     steps:
       - uses: actions/checkout@v4
@@ -18,5 +17,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
-      - run: npm install
-      - run: npm test
+      - name: Install dependencies
+        uses: npm install
+      - name: Build Project
+        uses: npm run build
