@@ -2,7 +2,8 @@ name: Deploy to S3 bucket
 
 on:
   push:
-    branches: [master]
+    branches:
+      - "master"
 
 jobs:
   build:
@@ -19,5 +20,3 @@ jobs:
           node-version: ${{ matrix.node }}
       - name: Install dependencies
         uses: npm install
-      - name: Build Project
-        uses: npm run build
