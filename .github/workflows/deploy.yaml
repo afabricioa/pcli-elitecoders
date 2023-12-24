@@ -10,11 +10,3 @@ jobs:
         steps:
             - name: Checkout code
               uses: actions/checkout@v4
-            - name: Setup node
-              uses: actions/setup-node@v4
-              with: 
-                node-version: '18'
-            - name: Install dependencies
-              uses: npm install
-            - name: Build Project
-              uses: npm run build
