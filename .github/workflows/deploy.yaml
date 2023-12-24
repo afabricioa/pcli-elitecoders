@@ -2,21 +2,19 @@ name: Deploy to S3 bucket
 
 on:
   push:
-    branches:
-      - "master"
-      
+    branches: [master]
+
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node: [ 14, 16, 18, 20 ]
-    name: Node ${{ matrix.node }} sample
-    steps:
-      - uses: actions/checkout@v4
-      - name: Setup node
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node }}
-      - name: Install dependencies
-        uses: npm install
+    build:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v4
+        - name: Setup node
+          uses: actions/setup-node@v4
+          with: 
+            node-version: '20'
+        - name: Install dependencies
+          run: npm install
+        - name: Build Project
+          run: npm run build
