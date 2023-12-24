@@ -8,10 +8,15 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [ 14, 16, 18, 20 ]
+    name: Node ${{ matrix.node }} sample
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
       - name: Setup node
         uses: actions/setup-node@v4
-      - name: Install dependencies
-        uses: npm ci
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npm ci
+      - run: npm test
